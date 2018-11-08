@@ -1,0 +1,18 @@
+load('Part1-TrainingData.mat')
+x = 0:0.01:1;
+n = numel(Xtrain);
+Lambda = 10;
+ks = [1,2,3,5,10,15,20];
+sizek = numel(ks);
+plot(Xtrain,Ytrain,'.'); hold on;
+% w = zeros(D,sizek);
+% f = dot(zeros(n,D), w(:,1));
+for k = ks
+    
+    D = 2*sizek+1;
+    DesignMatrix = Basis(Xtrain,k);  % size = n x D
+    % Choose which regression to use here
+    wk = RidgeRegression(DesignMatrix, Ytrain, Lambda); % size = Dx1
+    fk = DesignMatrix * wk;
+    plot(Xtrain, fk, 'g.');
+end
