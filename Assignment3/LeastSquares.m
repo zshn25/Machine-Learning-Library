@@ -1,9 +1,9 @@
 function w = LeastSquares(DesignMatrix,Y)
-%LEASTSQUARES with CVX
+% LEASTSQUARES: Closed form solution (and with CVX)
 % Inputs: DesignMatrix : n x D matrix, Y : n vector
 % Output: Weight vector w of least squares regression
 
-[num,dim] = size(Phi);
+% [num,dim] = size(DesignMatrix);
 
 % cvx_begin quiet
 %       variable w(dim,1);
