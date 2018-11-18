@@ -28,6 +28,7 @@ Lambda = 0.001;
 %     DesignMatrix = [DesignMatrix, Xtrain.^b];
 % end
 DesignMatrix = [ones(N,1), Xtrain];
+% DesignMatrix = Xtrain;
 % Decided to use Lasso Regression for tion of useful features only
 w = Lasso(Ytrain, DesignMatrix, Lambda);
 
@@ -38,3 +39,6 @@ err = Ytrain - f;
 trainloss = dot(err, err) ./ N;
 % err_validation = Yvalidation - Prediction2(Xvalidation, w, basis);
 % validationloss = dot(err_validation, err_validation) ./ size(Xvalidation,1);
+
+%
+negw = w < 0;
