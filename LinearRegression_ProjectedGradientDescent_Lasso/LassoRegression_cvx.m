@@ -1,9 +1,7 @@
-function w = LassoRegression(DesignMatrix, Y, Lambda)
+function w = LassoRegression_cvx(Y, DesignMatrix, Lambda)
 % LassoRegression with CVX
 % Inputs: DesignMatrix : n x D matrix, Y : nx1 vector
 % Output: Weight vector w: Dx1 of least squares regression
-
-[n,d] = size(DesignMatrix);
 
 cvx_begin quiet
       variable w(d,1);
