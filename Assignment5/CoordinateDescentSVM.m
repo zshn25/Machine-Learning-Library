@@ -16,8 +16,8 @@ function [alpha, w, TrainErrs, TestErrs] = CoordinateDescentSVM(Xtrain, ytrain, 
         
         % Solve the subproblem for coordinate r without any constraints:        
         %% Fill-in:
-
-        
+        index_r = logical(sparse(r,1,1,n,1));
+        alpha(r) = (1 -  (ytrain(index_r) * sum(alpha(~index_r)
         
         % Project the solution to the interval [0, C/n]
         % Fill-in:
