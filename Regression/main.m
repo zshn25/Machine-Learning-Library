@@ -4,7 +4,7 @@ close all; clear; clc;
 load('Part1-TrainingData.mat')
 load('Part1-TestData.mat')
 x = 0:0.01:1;
-Lambda = 10;
+Lambda = 0.0001;
 ks = [1,2,3,5,10,15,20];
 loss = zeros(numel(ks),1);
 
@@ -18,13 +18,15 @@ for k = ks
     
     DesignMatrix = Basis(Xtrain,k);  % size = n x D
     % ToDo: Choose which regression to use here
-    wk = L1LossPlusL2Regularization(DesignMatrix, Ytrain, Lambda); % size = Dx1
+    wk = Lasso(Ytrain, DesignMatrix, Lambda); % size = Dx1
     % Prediction
     fk = DesignMatrix * wk;
     % Loss (Least squares loss for Ridge regression)
     err_train = Ytrain - fk;
     trainloss(ks==k) = dot(err_train, err_train)./n;
-    err_test = Ytest - fk;
+    % Repeat same for test data
+    fk_test = Basis(Xtest,k) * Lasso(Ytest, DesignMatrix, Lambda);
+    err_test = Ytest - fk_test;
     testloss(ks==k) = dot(err_test, err_test)./n;
     
     % Plot
