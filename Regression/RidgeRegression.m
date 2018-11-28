@@ -11,7 +11,7 @@ function w = RidgeRegression(DesignMatrix,Y, Lambda)
 % cvx_end
 
 % Closed form solution: (p'p)^-1 p' Y
-w = (DesignMatrix'*DesignMatrix + Lambda * ones(dim)) \ (DesignMatrix' * Y);
+w = (DesignMatrix'*DesignMatrix + Lambda * eye(dim)) \ (DesignMatrix' * Y);
 
 end
 
