@@ -13,17 +13,17 @@ save LossSecondEx trainloss;
 %% Prediction2
 clear;
 load('Part2-TrainingData.mat');
-% Allocate validation data
-Xvalidation = Xtrain(end-49:end,:);
-Yvalidation = Ytrain(end-49:end,:);
+% Allocate validation data (20% train data)
+valid_size = round(0.2*size(Xtrain,1));
+Xvalidation = Xtrain(end-valid_size+1:end,:);
+Yvalidation = Ytrain(end-valid_size+1:end,:);
 
-Xtrain = Xtrain(1:end-50,:);
-Ytrain = Ytrain(1:end-50,:);
+Xtrain = Xtrain(1:end-valid_size,:);
+Ytrain = Ytrain(1:end-valid_size,:);
 
 % Normalize training data
 Xtrain = (Xtrain - mean(Xtrain,1)) ./ std(Xtrain,1);
-Ytrain = (Ytrain - mean(Ytrain,1)) ./ std(Ytrain,1);
-
+% Ytrain = (Ytrain - mean(Ytrain,1)) ./ std(Ytrain,1);
 
 [N, D] = size(Xtrain);
 % Training with Lasso Regression with polynomial basis

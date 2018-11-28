@@ -14,13 +14,15 @@ function [alpha, w, TrainErrs, TestErrs] = CoordinateDescentSVM(Xtrain, ytrain, 
     n = size(Xtrain, 1);
     alpha = sparse(n, 1);
     w = Xtrain'*(alpha.*ytrain); % initialize the primal variable
+    dualObj=0;
     
     TrainErrs = []; TestErrs = [];
     
-    counter = 0; iter = 0; EPS = 1e-3;
+    counter = 0; iter = 0; EPS = 1e-3; maxIter = 10000;
     CONVERGENCE = false; 
     while ~CONVERGENCE   
         
+        prevObj=dualObj;
         r = counter+1; % choose the coordinate r
         
         % Solve the subproblem for coordinate r without any constraints:        
@@ -44,29 +46,24 @@ function [alpha, w, TrainErrs, TestErrs] = CoordinateDescentSVM(Xtrain, ytrain, 
         
         % Compute the primal solution w from alpha:
         w = Xtrain'*(alpha.*ytrain);
-%         w_test = Xtest'*(alpha.*ytest);
         
         % Compute the training and test errors using the current iterate alpha:
         TrainErrs = [TrainErrs; C/n*sum(max(0, 1 - ytrain.*(Xtrain*w)))];
         TestErrs = [TestErrs; C/n*sum(max(0, 1 - ytest.*(Xtest*w)))];
         
         % If the KKT conditions are satisfied upto tolerance EPS by the current iterate alpha then set CONVERGENCE = true;
-        
-%          if ((alpha(r) == 0) && (ytrain(r)*(Xtrain(r,:)*w) - 1 >= EPS)) ||...
-%                 ((alpha(r) > 0) && (alpha(r) < C/n) && (ytrain(r)*(Xtrain(r,:)*w) - 1 == EPS)) ||...
-%                 ((alpha(r) == C/n) && (ytrain(r)*(Xtrain(r,:)*w) - 1 <= EPS))
-            
+
         if ((~isempty(find(alpha == 0)) && all(ytrain(alpha == 0) .* (Xtrain(alpha == 0,:) * w)...
-                - 1 >= EPS)) ||... 
+                - 1 >= EPS)) &&... 
             (~isempty(find((alpha > 0) & (alpha < C/n))) && all(ytrain((alpha > 0) & (alpha < C/n)) .* (Xtrain((alpha > 0) & (alpha < C/n),:) * w)...
-                - 1 == EPS)) ||... 
+                - 1 == EPS)) &&... 
             (~isempty(find(alpha == C/n)) && all(ytrain(alpha == C/n) .* (Xtrain(alpha == C/n,:) * w)...
                 - 1 <= EPS)))
             CONVERGENCE = 1;
         end
         counter = rem(counter+1, n);        
         
-        if iter > 10000
+        if (iter > maxIter) || (abs(dualObj - prevObj) < EPS)
             break;
         end
     end  
