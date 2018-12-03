@@ -35,10 +35,7 @@ function D = dist_euclidean( X, Y )
     Yt = Y';  
     XX = sum(X.*X,2);        
     YY = sum(Yt.*Yt,1);      
-    D = XX(:,ones(1,n)) + YY(ones(1,m),:) - 2*X*Yt;
-    
-    
-    
+    D = XX(:,ones(1,n)) + YY(ones(1,m),:) - 2*X*Yt;   
 
 %%%% code from Charles Elkan with variables renamed
 %    m = size(X,1); n = size(Y,1);
