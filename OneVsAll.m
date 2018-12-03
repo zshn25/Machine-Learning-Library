@@ -30,8 +30,9 @@ for class = min(Ytrain):max(Ytrain)
 end
 
 % Test
-Fx_test*Ytest
+L2error=Fx_test*Ytest
 
-randomimg=randi(size(Xtest,1))
-VecToImage(Xtest(randomimg,:),16,16,0,2,0), title(Ytest(randomimg));
+randomimg=randi(size(Xtest,1));
+VecToImage(Xtest(randomimg,:),16,16,0,2,0), 
+title(['True: ', num2str(Ytest(randomimg)), ' - Pred: ', num2str(Fx_test(randomimg))]);
 
