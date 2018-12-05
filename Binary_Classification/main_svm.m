@@ -11,3 +11,5 @@ for c = C
     title(['Test Error Rate for C: ', num2str(c)]), xlabel('Iterations'), ylabel('Error');
     saveas(gcf, ['DIGITS01TestErrs_' num2str(c)], 'png');
 end
+
+% imshow(reshape(Xtest(100,:),16,16),[])
