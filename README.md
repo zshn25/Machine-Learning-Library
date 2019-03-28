@@ -38,8 +38,39 @@ Contains many functions useful in Machine Learning with tested scripts
 3. ## Multi-class schemes for classification of handwritten digits
 
     Handwritten digit classification using multi-class SVM with a Gaussian kernel. In order to solve the optimization problem for the SVM, we are using the MATLAB interface to the LIBSVM package (http://www.csie.ntu.edu.tw/~cjlin/libsvm/).
+
+    One vs All and One vs One techniques are compared. Check the respective .m files of the same
+
     ![svm multi](Classification/correct_classification.png)
 
 4. ## Cross Validation in Feature Selection
 
     Exhaustive search for the best feature subset and permutation test.
+
+5. ## ROC curve and AUC
+
+	Inspecting the datasets and the predictions made by the two methods. Comparing with a random classifier and then permutation test to check if the methods are better than the random classifier or not.
+
+	![roc](Statistical_Tests/roc2.png)
+
+	### Permutation tests
+
+	permutation test for testing whether p(x|y = 1) is equal to p(x|y = −1) using the Fisher-score as the test-statistic (1000 permutations drawn uniform at random) and return the p-value.
+
+6. ## Gentle Boost
+
+	Implements Gentle Boost using a real-valued decision stump as the weak base classifier.
+
+7. ## Clustering
+
+	### K-means clustering
+
+	Lloyd's algorithm for k-means clustering
+
+	![roc](Clustering/data2kmeans.png)
+
+	### Spectral clustering
+
+	Spectral clustering using unnormalized graph Laplacian
+
+	![roc](Clustering/data2spectral.png)
