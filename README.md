@@ -25,7 +25,15 @@ Contains many functions useful in Machine Learning with tested scripts
       * Validation data sorted out
       * Data Normalization
 
-2. ## Dual Coordinate Ascent for Linear SVM
+2. ## Binary Classification
+    
+    ### Logistic Regression
+    
+    Logistic regression with L1 Regularization
+    
+    ![output](2_Binary_Classification/LogisticRegression/output_lr2_1.png)
+    
+    ### Dual Coordinate Ascent for Linear SVM
 
     Soft margin SVM is regularized empirical risk minimization with hinge loss and L2 regularization.
 
