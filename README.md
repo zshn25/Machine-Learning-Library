@@ -81,8 +81,8 @@ Contains many functions useful in Machine Learning with tested scripts
 	![Kernel pca](8_PCA/kernelpca.png)
 
 ## Authors
-[Zeeshan Khan Suri](https://github.com/zshn25)
-[Jyotsna Singh] (https://github.com/jyotsna792)
+[Zeeshan Khan Suri](https://github.com/zshn25), 
+[Jyotsna Singh](https://github.com/jyotsna792), 
 [Harshita Jhavar](https://github.com/harshitaJhavar)
 
 ## Acknowledgements
