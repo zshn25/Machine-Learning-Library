@@ -79,3 +79,15 @@ Contains many functions useful in Machine Learning with tested scripts
 
 	![pca](8_PCA/pca.png)
 	![Kernel pca](8_PCA/kernelpca.png)
+
+## Authors
+[Zeeshan Khan Suri](https://github.com/zshn25)
+[Jyotsna Singh] (https://github.com/jyotsna792)
+[Harshita Jhavar](https://github.com/harshitaJhavar)
+
+## Acknowledgements
+This library started as successfully finished assignments from [Machine Learning](https://www.mpi-inf.mpg.de/departments/computer-vision-and-machine-learning/teaching/courses/ws-20182019-machine-learning/) course from Saarland University. It also includes finished assignments form te Machine Learning course from Andrew Ng.
+
+## License
+Licensing of the course assignments apply
+
